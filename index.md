@@ -44,7 +44,8 @@ LTC: LViokiXWfyjD4M9LErhGmdt3uzDvmVo3pC
 DOGE: DRqJFr9ityNoL7v6oSnsZq2mh3VJBZm8pY  
   
   
-     
+  
+  
 Build based on madMAx43v3r source code, check his [github](https://github.com/madMAx43v3r/chia-plotter).  
 **He is a legend!**
 
