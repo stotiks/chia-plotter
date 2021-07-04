@@ -1,7 +1,7 @@
 This is a new implementation of a chia plotter which is designed as a processing pipeline, similar to how GPUs work, only the "cores" are normal software CPU threads.
 As a result this plotter is able to fully max out any storage device's bandwidth, simply by increasing the number of "cores", ie. threads.
 
-### [Dowload last release v0.0.7](https://github.com/stotiks/chia-plotter/releases/latest)
+### [Dowload last release v0.1.1](https://github.com/stotiks/chia-plotter/releases/latest)
 ### Usage
 
 ```
@@ -23,6 +23,7 @@ Usage:
   -d, --finaldir arg   Final directory (default = <tmpdir>)
   -w, --waitforcopy    Wait for copy to start next plot
   -p, --poolkey arg    Pool Public Key (48 bytes)
+  -c, --contract arg   Pool Contract Address (64 chars)
   -f, --farmerkey arg  Farmer Public Key (48 bytes)
   -G, --tmptoggle      Alternate tmpdir/tmpdir2 (default = false)
       --help           Print help
