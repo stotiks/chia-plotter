@@ -37,12 +37,12 @@ RAM usage depends on <threads> and <buckets>. With the new default of 256 bucket
   
   
 **Your donation will help me build new versions**:  
-Your donation will help me build new versions:
-XCH: xch1vhfnguq36yya0kzc0a0wr9yyj5cm2cefsukcu45jef3x3zpjpa7qc888nm 
-BTC: 17w2HvVdHnkACZnATMqZov5LJkx2EFUFdz 
-ETH: 0x0dd101c83341e0c43cc95514ca731092b14dea8b 
-LTC: LViokiXWfyjD4M9LErhGmdt3uzDvmVo3pC 
-DOGE: DRqJFr9ityNoL7v6oSnsZq2mh3VJBZm8pY 
+Your donation will help me build new versions:  
+XCH: xch1vhfnguq36yya0kzc0a0wr9yyj5cm2cefsukcu45jef3x3zpjpa7qc888nm  
+BTC: 17w2HvVdHnkACZnATMqZov5LJkx2EFUFdz  
+ETH: 0x0dd101c83341e0c43cc95514ca731092b14dea8b  
+LTC: LViokiXWfyjD4M9LErhGmdt3uzDvmVo3pC  
+DOGE: DRqJFr9ityNoL7v6oSnsZq2mh3VJBZm8pY  
   
   
   
