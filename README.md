@@ -6,16 +6,20 @@ similar to how GPUs work, only the "cores" are normal software CPU threads.
 As a result this plotter is able to fully max out any storage device's bandwidth,
 simply by increasing the number of "cores", ie. threads.
 
+Sponsored by [Flexpool.io](https://www.flexpool.io/) - Check them out if you're looking for a secure and scalable Chia pool.
+
 ## Usage
 
-Join the Discord for support: https://discord.gg/YJ4GSMMY
+Join the Discord for support: https://discord.gg/pQwkebKnPB
 
 ```
 For <poolkey> and <farmerkey> see output of `chia keys show`.
+To plot for pools, specify <contract> address via -c instead of <poolkey>, see `chia plotnft show`.
 <tmpdir> needs about 220 GiB space, it will handle about 25% of all writes. (Examples: './', '/mnt/tmp/')
 <tmpdir2> needs about 110 GiB space and ideally is a RAM drive, it will handle about 75% of all writes.
 Combined (tmpdir + tmpdir2) peak disk usage is less than 256 GiB.
-In case of <count> != 1, you may press Ctrl-C for graceful termination after current plot is finished or double Ctrl-c to terminate immediatelly\
+In case of <count> != 1, you may press Ctrl-C for graceful termination after current plot is finished,
+or double press Ctrl-C to terminate immediately.
 
 Usage:
   chia_plot [OPTION...]
@@ -29,9 +33,10 @@ Usage:
   -d, --finaldir arg   Final directory (default = <tmpdir>)
   -w, --waitforcopy    Wait for copy to start next plot
   -p, --poolkey arg    Pool Public Key (48 bytes)
-  -c, --contract arg   Pool Contract Address (64 chars)
+  -c, --contract arg   Pool Contract Address (62 chars)
   -f, --farmerkey arg  Farmer Public Key (48 bytes)
   -G, --tmptoggle      Alternate tmpdir/tmpdir2 (default = false)
+  -K, --rmulti2 arg    Thread multiplier for P2 (default = 1)
       --help           Print help
 ```
 
@@ -52,7 +57,7 @@ Note: 128 GiB System RAM minimum required for RAM disk.
 
 XCH: xch1w5c2vv5ak08pczeph7tp5xmkl5762pdf3pyjkg9z4ks4ed55j3psgay0zh
 
-ETH: 0x97057cdf529867838d2a1f7f23ba62456764e0cd
+ETH-ERC20: 0x97057cdf529867838d2a1f7f23ba62456764e0cd
 
 LTC: MNUnszsX2srv5EJpu9YYHAXb19MqUpuBjD
 
@@ -132,6 +137,7 @@ cd chia-plotter
 git checkout master
 git pull
 git submodule update --init
+./make_devel.sh
 ```
 
 ## Future Plans

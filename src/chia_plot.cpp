@@ -61,9 +61,6 @@ std::vector<uint8_t> bech32_address_decode(const std::string& addr)
 	if(res.encoding != bech32::Bech32m) {
 		throw std::logic_error("invalid contract address (!Bech32m): " + addr);
 	}
-	if(res.hrp != "xch" && res.hrp != "txch") {
-		throw std::logic_error("invalid contract address (" + res.hrp + " != xch): " + addr);
-	}
 	if(res.dp.size() != 52) {
 		throw std::logic_error("invalid contract address (size != 52): " + addr);
 	}
@@ -207,22 +204,22 @@ int _main(int argc, char** argv)
 {
 	std::cout << "Multi-threaded pipelined Chia k32 plotter";
 	#ifdef GIT_COMMIT_HASH
-		std::cout << " - " << GIT_COMMIT_HASH;
+		std::cout << " - " << GIT_COMMIT_HASH << std::endl;
 	#endif	
-
+		
 	#ifdef CHIA_PLOT_BUILD_INFO
-		std::cout << std::endl << CHIA_PLOT_BUILD_INFO;
+		std::cout << CHIA_PLOT_BUILD_INFO;
 	#endif
 	std::cout << std::endl << std::endl;
 
 	cxxopts::Options options("chia_plot",
 		"For <poolkey> and <farmerkey> see output of `chia keys show`.\n"
-		"To plot for pools, specify <contract> address instead of <poolkey>, see `chia plotnft show`.\n"
+		"To plot for pools, specify <contract> address via -c instead of <poolkey>, see `chia plotnft show`.\n"
 		"<tmpdir> needs about 220 GiB space, it will handle about 25% of all writes. (Examples: './', '/mnt/tmp/')\n"
 		"<tmpdir2> needs about 110 GiB space and ideally is a RAM drive, it will handle about 75% of all writes.\n"
 		"Combined (tmpdir + tmpdir2) peak disk usage is less than 256 GiB.\n"
 		"In case of <count> != 1, you may press Ctrl-C for graceful termination after current plot is finished,\n"
-		"or double press Ctrl-C to terminate immediately.\n"
+		"or double press Ctrl-C to terminate immediately.\n\n"
 	);
 	
 	std::string pool_key_str;
@@ -248,9 +245,10 @@ int _main(int argc, char** argv)
 		"d, finaldir", "Final directory (default = <tmpdir>)", cxxopts::value<std::string>(final_dir))(
 		"w, waitforcopy", "Wait for copy to start next plot", cxxopts::value<bool>(waitforcopy))(
 		"p, poolkey", "Pool Public Key (48 bytes)", cxxopts::value<std::string>(pool_key_str))(
-		"c, contract", "Pool Contract Address (64 chars)", cxxopts::value<std::string>(contract_addr_str))(
+		"c, contract", "Pool Contract Address (62 chars)", cxxopts::value<std::string>(contract_addr_str))(
 		"f, farmerkey", "Farmer Public Key (48 bytes)", cxxopts::value<std::string>(farmer_key_str))(
 		"G, tmptoggle", "Alternate tmpdir/tmpdir2", cxxopts::value<bool>(tmptoggle))(
+		"K, rmulti2", "Thread multiplier for P2 (default = 1)", cxxopts::value<int>(phase2::g_thread_multi))(
 		"help", "Print help");
 	
 	if(argc <= 1) {
@@ -432,7 +430,7 @@ int _main(int argc, char** argv)
 					
 					const auto time = (get_wall_time_micros() - total_begin) / 1e6;
 					if(time > 1) {
-					std::cout << "Copy to " << from_to.second << " finished, took " << time << " sec, "
+						std::cout << "Copy to " << from_to.second << " finished, took " << time << " sec, "
 							<< ((bytes / time) / 1024 / 1024) << " MB/s avg." << std::endl;
 					} else {
 						std::cout << "Renamed final plot to " << from_to.second << std::endl;
