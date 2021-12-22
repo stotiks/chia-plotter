@@ -2,7 +2,7 @@ This is a new implementation of a chia plotter which is designed as a processing
 As a result this plotter is able to fully max out any storage device's bandwidth, simply by increasing the number of "cores", ie. threads.
 
 ### [Dowload last release v0.1.6-chives](https://github.com/stotiks/chia-plotter/releases/latest)
-### Join [Chives Pool](https://www.chivespool.com) - Chives coin (XCC) pool with support for NFT plots
+### Join [Chives Pool](https://www.chivespool.com) - Chives coin (XCC) pool with NFT plots support
 &nbsp;
 &nbsp;
 ### Usage
